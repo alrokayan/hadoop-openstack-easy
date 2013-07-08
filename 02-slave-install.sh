@@ -102,5 +102,5 @@ then
 	sync
 	
 else
-	echo "[ERROR] You must specify one argument: The IP address of the master node.
+	echo "[ERROR] You must specify one argument: The IP address of the master node"
 fi
