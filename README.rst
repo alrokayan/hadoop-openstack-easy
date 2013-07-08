@@ -16,7 +16,8 @@ Steps to install Hadoop on OpenStack CentOS VMs:
 
 (1)	Git this repo
 
-	:::
+::
+
 	yum install -y git
 	git clone https://github.com/alrokayan/hadoop-openstack-easy.git
 	cd hadoop-openstack-centos
@@ -54,7 +55,8 @@ Check Salve Nodes
 
 From the master node; execute this command to see if the new salve (Data Node) is running:
 
-	:::
+::
+
 	sudo -u hdfs hadoop dfsadmin -report
 	
 Check HDFS Files
@@ -62,7 +64,8 @@ Check HDFS Files
 	
 From the master node; execute this command to see all the files in HDFS:
 
-	:::
+::
+
 	sudo -u hdfs hadoop fs -ls -R /
 
 
@@ -72,7 +75,8 @@ You must be able to ssh to the master VM directly, not via OpenStack controller,
 
 (1) Login to the master node and execute (or have your own file):
 
-	:::
+::
+
 	echo "test
 	yes
 	hadoop
@@ -97,7 +101,8 @@ You must be able to ssh to the master VM directly, not via OpenStack controller,
 
 (7)	From Eclipse: right-click on WorkCountDriver.java -> Run As -> Run On Hadoop with the following settings: 
 
-	:::
+::
+
 	Hostname: <MASTER VM HOST IP ADDRESS>
 	Installation directory: /usr/lib/hadoop
 	Username: root
@@ -105,7 +110,8 @@ You must be able to ssh to the master VM directly, not via OpenStack controller,
 
 (8) Login to the master node and execute: ``hadoop fs -cat /user/root/output/part-00000`` you should see:
 
-	:::
+::
+
 	hadoop	1
 	no	2
 	test	4
