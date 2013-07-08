@@ -1,4 +1,4 @@
-A Step-by-Step Guide to Install Hadoop on OpenStack CentOS VMs and Run Jobs via Eclipse Hadoop Plugin. With Cluster Scalability.
+A Step-by-Step Guide to Install Hadoop on CentOS VMs (on OpenStack) and Run Jobs via Eclipse Hadoop Plugin.
 =============================================================================================================================
 
 Project Information
