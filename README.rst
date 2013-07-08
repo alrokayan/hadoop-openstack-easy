@@ -1,5 +1,5 @@
 A Step-by-Step Guide to Install Hadoop on CentOS VMs (on OpenStack) and Run Jobs via Eclipse Hadoop Plugin.
-=============================================================================================================================
+===========================================================================================================
 
 Project Information
 -------------------
@@ -14,27 +14,31 @@ Installation Steps
 -------------------
 Steps to install Hadoop on OpenStack CentOS VMs:
 
-(1)	Git this repo
+(1)	From OpenStack Dashboard upload a CentOS image if you don't have one. You can download one from: http://c250663.r63.cf1.rackcdn.com/centos60_x86_64.qcow2
+
+(2) Provision two VMs, one master and one slave (we will provision several copies of this slave later)
+
+(3) On both VMs execute:
 
 ::
+	yum install -y git && git clone https://github.com/alrokayan/hadoop-openstack-easy.git && cd hadoop-openstack-centos
 
-	yum install -y git
-	git clone https://github.com/alrokayan/hadoop-openstack-easy.git
-	cd hadoop-openstack-centos
+(4) On master VM execute:
 
-(2)	From OpenStack Dashboard upload a CentOS image if you don't have one. You can download one from: http://c250663.r63.cf1.rackcdn.com/centos60_x86_64.qcow2
+::
+	. 01-master.sh <MASTER NODE IP ADDRESS>
 
-(3) Create 2 VMs, one master and one slave
+(5) On slave VM execute:
 
-(4) On both VMs: ``yum install -y git && git clone https://github.com/alrokayan/hadoop-openstack-easy.git && cd hadoop-openstack-centos``
+::
+	. 02-slave-install.sh <MASTER NODE IP ADDRESS>
 
-(5) On master VM execute ``. 01-master.sh <MASTER NODE IP ADDRESS>``
+(6) From OpenStack Dashboard take a snapshot of the slave image and WAIT until it is ACTIVE
 
-(6) On slave VM execute ``. 02-slave-install.sh <MASTER NODE IP ADDRESS>``
+(7) Now you can provision as much machine as you want from that snapshot, then on all slaves execute
 
-(7) From OpenStack dashboard take a snapshot of the slave image and WAIT until it is completed
-
-(8) Now you can provision as much machine as you want from that snapshot, and execute ``. 03-slave-start.sh`` on all of them.
+::
+	. 03-slave-start.sh
 
 
 Verification
