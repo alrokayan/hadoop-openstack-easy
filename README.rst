@@ -21,16 +21,19 @@ Steps to install Hadoop on OpenStack CentOS VMs:
 (3) On both VMs execute:
 
 ::
+
 	yum install -y git && git clone https://github.com/alrokayan/hadoop-openstack-easy.git && cd hadoop-openstack-centos
 
 (4) On master VM execute:
 
 ::
+
 	. 01-master.sh <MASTER NODE IP ADDRESS>
 
 (5) On slave VM execute:
 
 ::
+
 	. 02-slave-install.sh <MASTER NODE IP ADDRESS>
 
 (6) From OpenStack Dashboard take a snapshot of the slave image and WAIT until it is ACTIVE
@@ -38,6 +41,7 @@ Steps to install Hadoop on OpenStack CentOS VMs:
 (7) Now you can provision as much machine as you want from that snapshot, then on all slaves execute
 
 ::
+
 	. 03-slave-start.sh
 
 
