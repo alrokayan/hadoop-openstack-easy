@@ -81,9 +81,26 @@ From the master node; execute this command to see all the files in HDFS:
 
 Execute Hadoop Job From Eclipse Plugin
 --------------------------------------
-You must be able to ssh to the master VM directly, not via OpenStack controller, you may use VPN.
+(1) Add TCP 50020 to OpenStack security group (CIDR: 0.0.0.0/0)
 
-(1) Login to the master node and execute (or have your own file):
+(2) SSH tunnel Eclipse requests to the master VM as follows:
+For Windows (http://www.youtube.com/watch?v=uAqqho5yR88):
+- From PuTTY:
+	- Connection -> SSH -> Tunnels:
+		- Check: Local port accepts
+		- Secure Port: 50020
+		- Destination: <Windows VM IP ADDRESS>:50020
+		- Click "Add"
+	- Session
+		- Host Name: <Controller Username>@<Controller Hostname/IP>
+		- Click "Open"
+
+For Mac and Linux:
+- From Terminal: ssh -L 50020:<Windows VM IP ADDRESS>:50020 -l <Controller Username> <Controller Hostname/IP>
+
+Do the same thing wit port 50040
+
+(3) Login to the master node and execute (or have your own file):
 
 ::
 
@@ -99,26 +116,24 @@ You must be able to ssh to the master VM directly, not via OpenStack controller,
 	
 	hadoop fs -copyFromLocal text /user/root/text
 
-(2) In your computer that runs Eclipse, download *Hadoop Eclipse Plugin* from the last section in this page: http://wiki.apache.org/hadoop/EclipsePlugIn and place it in Eclipse plugin folder.
+(4) In your computer that runs Eclipse, download *Hadoop Eclipse Plugin* from the last section in this page: http://wiki.apache.org/hadoop/EclipsePlugIn and place it in Eclipse plugin folder.
 
-(3) Download Hadoop Jars (preferred stable): http://hadoop.apache.org/releases.html#Download and uncompress it, then place it in your home or C:\\ directory, or anywhere you like. 
+(5) Download Hadoop Jars (preferred stable): http://hadoop.apache.org/releases.html#Download and uncompress it, then place it in your home or C:\\ directory, or anywhere you like. 
 
-(4)	Open Eclipse then choose: File -> New -> Project -> *MapReduce Project*.
+(6)	Open Eclipse then choose: File -> New -> Project -> *MapReduce Project*.
 
-(5)	Put any project name, then click ``Configure Hadoop install directory…``, then click ``Browse...`` and select your uncompressed Hadoop Jars folder, example: /Users/alrokayan/hadoop-0.22.0, then click Apply -> OK -> Finish.
+(7)	Put any project name, then click ``Configure Hadoop install directory…``, then click ``Browse...`` and select your uncompressed Hadoop Jars folder, example: /Users/alrokayan/hadoop-0.22.0, then click Apply -> OK -> Finish.
 
-(6)	Drag (or copy-and-past) the three .java files from ``Eclipse-Example`` folder (``WordCountDriver.java``, ``WordCountMap.java``, and ``WordCountReduce.java``) into the ``src`` folder (not the project it self) in Eclipse, then choose copy, then press OK.
+(8)	Drag (or copy-and-past) the three .java files from ``Eclipse-Example`` folder (``WordCountDriver.java``, ``WordCountMap.java``, and ``WordCountReduce.java``) into the ``src`` folder (not the project it self) in Eclipse, then choose copy, then press OK.
 
-(7)	From Eclipse: right-click on WorkCountDriver.java -> Run As -> Run On Hadoop with the following settings: 
+(9)	From Eclipse: right-click on WorkCountDriver.java -> Run As -> Run On Hadoop with the following settings: 
 
 ::
 
-	Hostname: <MASTER VM HOST IP ADDRESS>
-	Installation directory: /usr/lib/hadoop
-	Username: root
-	Password: <MASTER VM PASSWORD>
+	Host: localhost
+	Port: 50020
 
-(8) Login to the master node and execute: ``hadoop fs -cat /user/root/output/part-00000`` you should see:
+(10) Login to the master node and execute: ``hadoop fs -cat /user/root/output/part-00000`` you should see:
 
 ::
 
