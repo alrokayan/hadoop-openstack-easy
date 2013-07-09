@@ -81,9 +81,9 @@ then
 	rm -f /etc/hadoop/conf/hdfs-site.xml
 	rm -f /etc/hadoop/conf/mapred-site.xml
 
-	cp ../conf/core-site.xml /etc/hadoop/conf/
-	cp ../conf/hdfs-site.xml /etc/hadoop/conf/
-	cp ../conf/mapred-site.xml /etc/hadoop/conf/
+	cp conf/core-site.xml /etc/hadoop/conf/
+	cp conf/hdfs-site.xml /etc/hadoop/conf/
+	cp conf/mapred-site.xml /etc/hadoop/conf/
 	
 	# Set folders permission
 	mkdir -p /hdfs/namenode

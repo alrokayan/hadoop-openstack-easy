@@ -81,9 +81,9 @@ then
 	rm -f /etc/hadoop/conf/hdfs-site.xml
 	rm -f /etc/hadoop/conf/mapred-site.xml
 
-	cp ../conf/core-site.xml /etc/hadoop/conf/
-	cp ../conf/hdfs-site.xml /etc/hadoop/conf/
-	cp ../conf/mapred-site.xml /etc/hadoop/conf/
+	cp conf/core-site.xml /etc/hadoop/conf/
+	cp conf/hdfs-site.xml /etc/hadoop/conf/
+	cp conf/mapred-site.xml /etc/hadoop/conf/
 	
 	# Set folders permission
 	mkdir -p /hdfs/namenode
@@ -126,7 +126,6 @@ then
 	sudo -u hdfs hadoop fs -chmod 1777 /tmp/hadoop-mapred/mapred
 	sudo -u hdfs hadoop fs -mkdir /user/root
 	sudo -u hdfs hadoop fs -chown root /user/root
-	sudo -u hdfs hadoop fs -ls -R /
 
 else
 	echo "[ERROR] You must specify one argument: The IP address of the master node"
