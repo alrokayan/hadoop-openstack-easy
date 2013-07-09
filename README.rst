@@ -86,20 +86,25 @@ Execute Hadoop Job From Eclipse Plugin
 
 (2) SSH tunnel Eclipse requests to the master VM as follows:
 
-### From PuTTY on Windows :
+From PuTTY on Windows
+^^^^^^^^^^^^^^^^^
+- Connection -> SSH -> Tunnels:
+	- Check: Local port accepts
+	- Secure Port: 50020
+	- Destination: <Windows VM IP ADDRESS>:50020
+	- Click "Add"
+- Session
+	- Host Name: <Controller Username>@<Controller Hostname/IP>
+	- Click "Open"
+- Do the same thing with port 50040
 
-	- Connection -> SSH -> Tunnels:
-		- Check: Local port accepts
-		- Secure Port: 50020
-		- Destination: <Windows VM IP ADDRESS>:50020
-		- Click "Add"
-	- Session
-		- Host Name: <Controller Username>@<Controller Hostname/IP>
-		- Click "Open"
+From Terminal on Mac and Linux
+^^^^^^^^^^^^^^^^^
 
-### From Terminal on Mac and Linux: ssh -L 50020:<Windows VM IP ADDRESS>:50020 -l <Controller Username> <Controller Hostname/IP>
+- ``ssh -L 50020:<Windows VM IP ADDRESS>:50020 -l <Controller Username> <Controller Hostname/IP>``
 
-Do the same thing wit port 50040
+- Do the same thing with port 50040
+
 
 (3) Login to the master node and execute (or have your own file):
 
