@@ -81,11 +81,13 @@ From the master node; execute this command to see all the files in HDFS:
 
 Execute Hadoop Job From Eclipse Plugin
 --------------------------------------
+
 (1) Add TCP 50020 to OpenStack security group (CIDR: 0.0.0.0/0)
 
 (2) SSH tunnel Eclipse requests to the master VM as follows:
-For Windows (http://www.youtube.com/watch?v=uAqqho5yR88):
-- From PuTTY:
+
+### From PuTTY on Windows :
+
 	- Connection -> SSH -> Tunnels:
 		- Check: Local port accepts
 		- Secure Port: 50020
@@ -95,8 +97,7 @@ For Windows (http://www.youtube.com/watch?v=uAqqho5yR88):
 		- Host Name: <Controller Username>@<Controller Hostname/IP>
 		- Click "Open"
 
-For Mac and Linux:
-- From Terminal: ssh -L 50020:<Windows VM IP ADDRESS>:50020 -l <Controller Username> <Controller Hostname/IP>
+### From Terminal on Mac and Linux: ssh -L 50020:<Windows VM IP ADDRESS>:50020 -l <Controller Username> <Controller Hostname/IP>
 
 Do the same thing wit port 50040
 
